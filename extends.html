@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script src="lib/js/Vue-2.4.0.js"></script>
+    <!--<script type="x-template" src="lib/pages/a.html"></script>-->
+</head>
+<body>
+<div id="app">
+    <!--{{num}}-->
+    ${num}
+    <button @click="add">++</button>
+</div>
+<script>
+    var extendsObj={
+        updated:function() {
+            console.log('扩展'+this.num);
+        },
+        methods:{
+            add:function(){
+                console.log('扩展add'+this.num);
+                this.num++;
+            }
+        },
+    };
+    var app=new Vue({
+        el:'#app',
+        data:{
+            num:'1'
+        },
+        methods:{
+            add:function(){
+                console.log('原生add'+this.num);
+                this.num++;
+            }
+        },
+        updated:function() {
+            console.log('原生'+this.num);
+        },
+        extends:extendsObj,
+        delimiters:['${','}']
+    })
+</script>
+</body>
+</html>

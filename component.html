@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script src="lib/js/Vue-2.4.0.js"></script>
+    <!--<script type="x-template" src="lib/pages/a.html"></script>-->
+</head>
+<body>
+    <div id="app">
+        <lorder></lorder>
+        <panda :from-here="message"></panda>
+        <cat></cat>
+    </div>
+
+    <script>
+        Vue.component('lorder',{
+            template:`<div>全局组件</div>`
+        });
+        var city={
+            template:`<div>city</div>`
+        };
+        var cat={
+            template:`<div>cat <city></city></div>`,
+            components:{
+                city:city
+            }
+        };
+        var app=new Vue({
+            el:'#app',
+            data:{
+                message:"666"
+            },
+            components:{
+                panda:{
+                    template:'<div>{{fromHere}}</div>',
+                    props:['fromHere']
+                },
+                cat:cat
+            }
+        });
+    </script>
+</body>
+</html>

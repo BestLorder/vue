@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script src="lib/js/Vue-2.4.0.js"></script>
+    <!--<script type="x-template" src="lib/pages/a.html"></script>-->
+</head>
+<body>
+    <div id="app">
+        {{price}}
+        {{newPrice}}
+        <ul>
+            <li v-for="item in reverNews">{{item.title}}:{{item.date}}</li>
+        </ul>
+    </div>
+    <script>
+        var app=new Vue({
+            el:'#app',
+            data:{
+                message:'hello world',
+                price:100,
+                newList:[
+                    {title:'张飞来也',date:'2017/3/1'},
+                    {title:'张飞来也',date:'2017/3/3'},
+                    {title:'张飞来也',date:'2017/3/20'}
+                ]
+            },
+            computed:{
+                newPrice:function(){
+                    return '￥'+this.price+'元'
+                },
+                reverNews:function(){
+                    return this.newList.reverse()
+                }
+            }
+        })
+    </script>
+</body>
+</html>

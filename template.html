@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script src="lib/js/Vue-2.4.0.js"></script>
+    <!--<script type="x-template" src="lib/pages/a.html"></script>-->
+</head>
+<body>
+    <div id="app"></div>
+    <script type="x-template" id="demo3" >
+        <!--<h2 style="color:red">我是script标签模板</h2>-->
+    </script>
+    <!--<script src="lib/pages/a.js"></script>-->
+    <script>
+        var outData={
+            arr:['1','2','3']
+        };
+        var app=new Vue({
+            el:'#app',
+            data:outData,
+            template:'#demo3'
+        })
+    </script>
+</body>
+</html>

@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script src="lib/js/Vue-2.4.0.js"></script>
+    <!--<script type="x-template" src="lib/pages/a.html"></script>-->
+</head>
+<body>
+    <div id="app">
+        <Lorder>
+            <span slot="bolgUrl">{{Lorder.bolgURL}}</span>
+        </Lorder>
+    </div>
+    <template id="tep">
+        <div>
+            <p>博客地址: <slot name="bolgUrl"></slot></p>
+            <p>网名</p>
+            <p>技术类型</p>
+            <slot></slot>
+        </div>
+    </template>
+    <script>
+        var app=new Vue({
+            el:'#app',
+            data:{
+                Lorder:{
+                    bolgURL:'http://jspang.com',
+                    netName:'Lorder',
+                    skill:'web前端'
+                }
+            },
+            components:{
+                Lorder:{
+                    template:'#tep',
+                    data:function(){
+                        return {
+                            a:666
+                        }
+                    }
+                }
+            }
+        })
+    </script>
+</body>
+</html>

@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script src="lib/js/Vue-2.4.0.js"></script>
+    <!--<script type="x-template" src="lib/pages/a.html"></script>-->
+</head>
+<body>
+    <div id="app">
+        <p>今日温度：{{wendu}}</p>
+        <p>穿衣建议:{{clothes}}</p>
+        <button @click="increase">升温</button>
+        <button @click="reduce">降温</button>
+    </div>
+    <script>
+        var app=new Vue({
+            el:'#app',
+            data:{
+                message:'hello world',
+                wendu:20,
+                clothes:'长裙'
+            },
+            methods:{
+                increase:function(){
+                    this.wendu+=5;
+                },
+                reduce:function(){
+                    this.wendu-=5;
+                },
+            },
+            watch:{
+                wendu:function(newValue,oldValue){
+                    if(newValue>=25){
+                        this.clothes='短裙'
+                    }else if(newValue<20){
+                        this.clothes='长裤'
+                    }else{
+                        this.clothes='长裙'
+                    }
+                }
+            }
+        })
+    </script>
+</body>
+</html>

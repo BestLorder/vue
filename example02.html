@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script src="lib/js/Vue-2.4.0.js"></script>
+    <script src="lib/js/jquery-3.3.1.min.js"></script>
+    <!--<script type="x-template" src="lib/pages/a.html"></script>-->
+</head>
+<body>
+    <div id="app">
+        {{message}}
+    </div>
+    <p onclick="destroy()">销毁</p>
+    <p onclick="reload()">刷新</p>
+    <script>
+        var Lorder=Vue.extend({
+           template:`<p>{{message}}</p>`,
+           data:function(){
+               return {
+                   message:'Hello,I am Lorder!'
+               }
+           } ,
+            mounted:function(){
+               console.log('mounted 创建了')
+            },
+            destroyed:function(){
+               console.log('destroy 销毁了');
+            },
+            updated:function(){
+                console.log('updated 更新了');
+            }
+        });
+        var vm=new Lorder().$mount('#app');
+        function destroy(){
+            vm.$destroy();
+        }
+        function reload(){
+            vm.$forceUpdate();
+        }
+    </script>
+</body>
+</html>

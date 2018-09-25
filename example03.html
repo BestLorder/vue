@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script src="lib/js/Vue-2.4.0.js"></script>
+    <!--<script type="x-template" src="lib/pages/a.html"></script>-->
+</head>
+<body>
+<div id="app">
+    {{num}}
+    <button @click="add">++</button>
+    <button @click="reduce()">--</button>
+</div>
+<script>
+    var app=new Vue({
+        el:'#app',
+        data:{
+            num:'1'
+        },
+        methods:{
+            add:function(){
+                console.log('原生add'+this.num);
+                this.num++;
+            }
+        },
+    });
+    app.$on('reduce',function(){
+        this.num--;
+    });
+    function reduce(){
+        app.$emit('reduce');
+    }
+</script>
+</body>
+</html>
